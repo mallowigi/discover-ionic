@@ -1,7 +1,6 @@
 import routes from './router.js';
 
 export var app = angular.module('discover', ['ionic'])
-  .config(['$stateProvider', '$urlRouterProvider', routes])
 
   .run(function ($ionicPlatform) {
     'use strict';

@@ -19,13 +19,15 @@ var templateCache = require('gulp-angular-templatecache');
 var buffer = require('vinyl-buffer');
 var sourcemaps = require('gulp-sourcemaps');
 var wiredep = require('wiredep');
+var watch = require('gulp-watch');
+var run = require('run-sequence');
 
 var paths = {
   sass: ['./scss/**/*.scss'],
   js: ['./scripts/**/*.js']
 };
 
-gulp.task('default', ['sass', 'js']);
+gulp.task('default', ['sass', 'bundle']);
 
 gulp.task('js', function (done) {
   gulp.src(paths.js)
@@ -69,9 +71,8 @@ gulp.task('templates', function () {
 });
 
 gulp.task('watch', function () {
-  gulp.watch('**/*.scss', ['sass']);
-  gulp.watch('**/*.js', ['bundle']);
-  gulp.watch('bower.json', ['install', 'wiredep']);
+  watch('**/*.scss', {cwd: 'src'}, function () {run('sass')});
+  watch('**/*.js', {cwd: 'src'}, function () {run('bundle')});
 });
 
 gulp.task('install', ['git-check'], function () {
