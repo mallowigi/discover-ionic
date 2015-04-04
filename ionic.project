@@ -2,6 +2,7 @@
   "name": "discover",
   "app_id": "",
   "gulpStartupTasks": [
+     "templates",
       "watch"
     ]
 }

@@ -2,7 +2,7 @@ var modules = [
   'ionic'
 
   // ng templates
-  //'templates'
+  , 'templates'
 
   // app modules here
 ];

@@ -58,7 +58,7 @@ gulp.task('templates', function () {
       root: 'www',
       module: 'templates'
     }))
-    .pipe(gulp.dest('./www/js'));
+    .pipe(gulp.dest('./src'));
 });
 
 gulp.task('watch', function () {
@@ -87,13 +87,12 @@ gulp.task('vendors', function () {
 
 gulp.task('bundle', function () {
   browserify({
-    entries: './src/main.js',
+    entries: ['./src/templates.js','./src/main.js'],
     debug: true
   })
     .transform(babelify.configure({ignore: /lib/}))
     .transform(envify)
     .bundle()
-    .pipe(plumber())
     .pipe(source('app.js'))
     .pipe(buffer())
     .pipe(sourcemaps.init({loadMaps: true}))
