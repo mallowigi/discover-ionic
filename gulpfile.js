@@ -22,10 +22,10 @@ var wiredep = require('wiredep');
 var watch = require('gulp-watch');
 var run = require('run-sequence');
 
-var paths = {
-  sass: ['./scss/**/*.scss'],
-  js: ['./scripts/**/*.js']
-};
+var libs = [
+  './www/lib/ionic/js/ionic.bundle.js',
+  './www/lib/lodash/lodash.js'
+];
 
 gulp.task('default', ['sass', 'bundle']);
 
@@ -38,16 +38,7 @@ gulp.task('js', function (done) {
 });
 
 gulp.task('sass', function (done) {
-  var onError = function (err) {
-    notify.onError({
-      title: "Gulp",
-      subtitle: "Sass Failure!",
-      message: "Error: <%= error.message %>",
-      sound: "Beep"
-    })(err);
-  };
-
-  gulp.src('./src/ionic.app.scss')
+  gulp.src('./src/app.scss')
     .pipe(plumber())
     .pipe(sass())
     .pipe(prefix("last 10 versions", "> 1%", "ie 8", "ie 7"))
@@ -88,14 +79,21 @@ gulp.task('bower', function () {
     .pipe(gulp.dest('./'));
 });
 
+gulp.task('vendors', function () {
+  gulp.src(libs)
+    .pipe(concat('vendors.js'))
+    .pipe(gulp.dest('./www/lib'));
+});
+
 gulp.task('bundle', function () {
   browserify({
-    entries: './src/app.js',
+    entries: './src/main.js',
     debug: true
   })
-    .transform(babelify)
+    .transform(babelify.configure({ignore: /lib/}))
     .transform(envify)
     .bundle()
+    .pipe(plumber())
     .pipe(source('app.js'))
     .pipe(buffer())
     .pipe(sourcemaps.init({loadMaps: true}))
