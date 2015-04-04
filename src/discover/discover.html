@@ -1,24 +1,24 @@
-<ion-view view-title="Discover" class="discover-page">
+<ion-view view-title="Discover" class="discover-page" ng-controller="DiscoverCtrl as discover">
     <ion-content scroll="false">
 
 
         <div class="list card current-song">
 
             <div class="item item-image">
-                <img ng-src="/img/ionic.png">
+                <img ng-src="{{ discover.currentSong.image_large }}">
             </div>
 
             <div class="item">
-                <h2>It's so cold in Wisconsin</h2>
-                <p>Max Lynch</p>
+                <h2>{{ discover.currentSong.title }}</h2>
+                <p>{{ discover.currentSong.artist }}</p>
             </div>
 
             <div class="item tabs tabs-secondary tabs-icon-left">
-                <a class="tab-item">
+                <a class="tab-item" ng-click="discover.sendFeedback(false)">
                     <i class="icon ion-close"></i>
                     Skip
                 </a>
-                <a class="tab-item">
+                <a class="tab-item" ng-click="discover.sendFeedback(true)">
                     <i class="icon ion-heart"></i>
                     Favorite
                 </a>

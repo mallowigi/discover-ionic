@@ -10,7 +10,7 @@ var appRouter = ['$stateProvider', '$urlRouterProvider', function mainRouter ($s
     // Set up an abstract state for the tabs directive:
     .state('tab', {
       url: '/tab',
-      abstract:true,
+      abstract: true,
       templateUrl: 'www/tabs/tabs.html',
       controller: 'TabsCtrl'
     })
@@ -22,6 +22,7 @@ var appRouter = ['$stateProvider', '$urlRouterProvider', function mainRouter ($s
       views: {
         'tab-discover': {
           templateUrl: 'www/discover/discover.html',
+          controllerAs: 'discover',
           controller: 'DiscoverCtrl'
         }
       }
@@ -37,7 +38,7 @@ var appRouter = ['$stateProvider', '$urlRouterProvider', function mainRouter ($s
       }
     });
   // If none of the above states are matched, use this as the fallback:
-  $urlRouterProvider.otherwise('/tab');
+  $urlRouterProvider.otherwise('/tab/discover');
 
 }];
 

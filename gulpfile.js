@@ -94,9 +94,17 @@ gulp.task('bundle', function () {
     .transform(babelify.configure({ignore: /lib/}))
     .transform(envify)
     .bundle()
+    .on('error', standardHandler)
     .pipe(source('app.js'))
     .pipe(buffer())
     .pipe(sourcemaps.init({loadMaps: true}))
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('./www/js/'));
 });
+
+// Standard handler
+function standardHandler(err){
+  console.error(err);
+  notify(err);
+  this.end();
+}
