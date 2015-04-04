@@ -10,31 +10,32 @@ var appRouter = ['$stateProvider', '$urlRouterProvider', function mainRouter ($s
     // Set up an abstract state for the tabs directive:
     .state('tab', {
       url: '/tab',
+      abstract:true,
       templateUrl: 'www/tabs/tabs.html',
       controller: 'TabsCtrl'
     })
-    //
-    //// Each tab has its own nav history stack:
-    //
-    //.state('tab.discover', {
-    //  url: '/discover',
-    //  views: {
-    //    'tab-discover': {
-    //      templateUrl: 'discover/discover.html',
-    //      controller: 'DiscoverCtrl'
-    //    }
-    //  }
-    //})
-    //
-    //.state('tab.favorites', {
-    //  url: '/favorites',
-    //  views: {
-    //    'tab-favorites': {
-    //      templateUrl: 'templates/favorites.html',
-    //      controller: 'FavoritesCtrl'
-    //    }
-    //  }
-    //});
+
+    // Each tab has its own nav history stack:
+
+    .state('tab.discover', {
+      url: '/discover',
+      views: {
+        'tab-discover': {
+          templateUrl: 'www/discover/discover.html',
+          controller: 'DiscoverCtrl'
+        }
+      }
+    })
+
+    .state('tab.favorites', {
+      url: '/favorites',
+      views: {
+        'tab-favorites': {
+          templateUrl: 'www/favorites/favorites.html',
+          controller: 'FavoritesCtrl'
+        }
+      }
+    });
   // If none of the above states are matched, use this as the fallback:
   $urlRouterProvider.otherwise('/tab');
 
