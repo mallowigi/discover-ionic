@@ -64,6 +64,7 @@ gulp.task('templates', function () {
 gulp.task('watch', function () {
   watch('**/*.scss', {cwd: 'src'}, function () {run('sass')});
   watch('**/*.js', {cwd: 'src'}, function () {run('bundle')});
+  watch('**/*.html', {cwd: 'src'}, function () {run('templates');});
 });
 
 gulp.task('install', ['git-check'], function () {
@@ -87,7 +88,7 @@ gulp.task('vendors', function () {
 
 gulp.task('bundle', function () {
   browserify({
-    entries: ['./src/templates.js','./src/main.js'],
+    entries: ['./src/templates.js', './src/main.js'],
     debug: true
   })
     .transform(babelify.configure({ignore: /lib/}))

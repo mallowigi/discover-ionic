@@ -5,6 +5,7 @@ var modules = [
   , 'templates'
 
   // app modules here
+  ,'discover.tabs'
 ];
 
 export default modules;

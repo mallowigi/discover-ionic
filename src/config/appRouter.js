@@ -5,15 +5,14 @@ var appRouter = ['$stateProvider', '$urlRouterProvider', function mainRouter ($s
   // Learn more here: https://github.com/angular-ui/ui-router.
   // Set up the various states in which the app can be.
   // Each state's controller can be found in controllers.js.
-  //$stateProvider
+  $stateProvider
 
-    //// Set up an abstract state for the tabs directive:
-    //.state('tab', {
-    //  url: '/tab',
-    //  abstract: true,
-    //  templateUrl: 'tabs/tabs.html',
-    //  controller: 'TabsCtrl'
-    //})
+    // Set up an abstract state for the tabs directive:
+    .state('tab', {
+      url: '/tab',
+      templateUrl: 'www/tabs/tabs.html',
+      controller: 'TabsCtrl'
+    })
     //
     //// Each tab has its own nav history stack:
     //
@@ -37,7 +36,7 @@ var appRouter = ['$stateProvider', '$urlRouterProvider', function mainRouter ($s
     //  }
     //});
   // If none of the above states are matched, use this as the fallback:
-  $urlRouterProvider.otherwise('/tab/discover');
+  $urlRouterProvider.otherwise('/tab');
 
 }];
 
