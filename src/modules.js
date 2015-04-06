@@ -5,7 +5,10 @@ var modules = [
   , 'templates'
 
   // app modules here
-  ,'discover.tabs'
+  , 'discover.config'
+  , 'discover.models'
+  , 'discover.tabs'
+
 ];
 
 export default modules;

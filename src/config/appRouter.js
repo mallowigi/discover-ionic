@@ -22,8 +22,7 @@ var appRouter = ['$stateProvider', '$urlRouterProvider', function mainRouter ($s
       views: {
         'tab-discover': {
           templateUrl: 'www/discover/discover.html',
-          controllerAs: 'discover',
-          controller: 'DiscoverCtrl'
+          controller: 'DiscoverCtrl as discoverCtrl'
         }
       }
     })
@@ -33,7 +32,7 @@ var appRouter = ['$stateProvider', '$urlRouterProvider', function mainRouter ($s
       views: {
         'tab-favorites': {
           templateUrl: 'www/favorites/favorites.html',
-          controller: 'FavoritesCtrl'
+          controller: 'FavoritesCtrl as favoritesCtrl'
         }
       }
     });

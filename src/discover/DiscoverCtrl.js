@@ -1,10 +1,15 @@
+var $timeout;
+
 class DiscoverController {
 
-  constructor ($timeout) {
+  constructor (_$timeout_, User) {
     'use strict';
+    $timeout = _$timeout_;
 
-    this.$timeout = $timeout;
+    // The User
+    this.User = User;
 
+    // List of songs
     this.songs = [
       {
         "title": "Stealing Cinderella",
@@ -36,11 +41,16 @@ class DiscoverController {
     this.currentSong.rated = like;
     this.currentSong.animating = true;
 
-    this.$timeout(() => {
+    // add song as favorite
+    if (like) {
+      this.User.addSong(this.currentSong);
+    }
+
+    $timeout(() => {
       var randomSong = Math.round(Math.random() * (this.songs.length - 1));
       this.currentSong = angular.copy(this.songs[randomSong]);
     }, 300);
   }
 }
 
-export default ['$timeout', DiscoverController];
+export default ['$timeout', 'User', DiscoverController];

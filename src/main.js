@@ -3,5 +3,7 @@
  */
 // This is the entry point of browserify
 
-import tabs from './tabs/tabsModule.js'
+import config from './config/configModule.js';
+import models from './models/modelsModule.js';
+import tabs from './tabs/tabsModule.js';
 import app from './app.js';

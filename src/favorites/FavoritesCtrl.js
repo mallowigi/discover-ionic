@@ -1,8 +1,17 @@
 class FavoritesCtrl {
-  constructor () {
+  constructor (User) {
     'use strict';
 
+    this.User = User;
+  }
+
+  removeSong (song, index) {
+    this.User.removeSong(song, index);
+  }
+
+  get favorites () {
+    return this.User.favorites;
   }
 }
 
-export default [FavoritesCtrl];
+export default ['User', FavoritesCtrl];
