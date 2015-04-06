@@ -2,7 +2,10 @@
     <ion-content scroll="false">
 
 
-        <div class="list card current-song">
+        <div class="list card current-song"
+             ng-show="discover.currentSong && !discover.currentSong.animating"
+             ng-class="{skipped: discover.currentSong.rated === false,
+                        rated: discover.currentSong.rated === true}">
 
             <div class="item item-image">
                 <img ng-src="{{ discover.currentSong.image_large }}">

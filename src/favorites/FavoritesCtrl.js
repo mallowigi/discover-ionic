@@ -1,2 +1,8 @@
-var FavoritesCtrl = [function FavoritesCtrl ($scope) {}];
-export default  FavoritesCtrl;
+class FavoritesCtrl {
+  constructor () {
+    'use strict';
+
+  }
+}
+
+export default [FavoritesCtrl];

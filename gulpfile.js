@@ -24,7 +24,8 @@ var run = require('run-sequence');
 
 var libs = [
   './www/lib/ionic/js/ionic.bundle.js',
-  './www/lib/lodash/lodash.js'
+  './www/lib/lodash/lodash.js',
+  './www/lib/angular-animate/angular-animate.js'
 ];
 
 gulp.task('default', ['sass', 'bundle']);
@@ -43,11 +44,11 @@ gulp.task('sass', function (done) {
     .pipe(sass())
     .pipe(prefix("last 10 versions", "> 1%", "ie 8", "ie 7"))
     .pipe(gulp.dest('./www/css/'))
-    .pipe(minifyCss({
-      keepSpecialComments: 0
-    }))
-    .pipe(rename({extname: '.min.css'}))
-    .pipe(gulp.dest('./www/css/'))
+    //.pipe(minifyCss({
+    //  keepSpecialComments: 0
+    //}))
+    //.pipe(rename({extname: '.min.css'}))
+    //.pipe(gulp.dest('./www/css/'))
     .on('end', done);
 });
 

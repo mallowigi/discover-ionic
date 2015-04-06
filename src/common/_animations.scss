@@ -1,0 +1,15 @@
+@mixin scale_in {
+	@include transform(scale(1));
+	@include transition(all cubic-bezier(0.420, 0.000, 1.000, 1.000) 0.1s);
+	opacity: 1;
+}
+
+@mixin tinder ($like) {
+	$modifier: -1;
+
+	@if ($like) {
+		$modifier: 1;
+	}
+	@include transform(translateX($modifier * 1000px) rotate($modifier * 50deg));
+	opacity: 0;
+}

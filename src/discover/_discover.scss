@@ -1,0 +1,40 @@
+.discover-page {
+
+	// The current song card
+	.current-song {
+		@include scale_in;
+
+		// The song image
+		.item_image {
+			max-height: 300px;
+			overflow: hidden;
+
+			// For smaller screens
+			@media screen and (max-height: 600px) {
+				max-height: 200px;
+			}
+		}
+
+		// Favorited
+		&.rated {
+			@include tinder(true);
+		}
+		&.skipped {
+			@include tinder(false);
+		}
+	}
+
+
+
+	// When the song need to disappear
+	.current-song.ng-hide-add {
+		@include transition(all cubic-bezier(0.420, 0.000, 1.000, 1.000) 0.3s);
+		display: block !important;
+	}
+
+	// When the new song appears
+	.current-song.ng-hide-remove {
+		@include transform(scale(0.7) translateX(0px) rotate(0deg));
+		opacity: 0;
+	}
+}

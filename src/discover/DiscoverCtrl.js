@@ -1,7 +1,9 @@
 class DiscoverController {
 
-  constructor () {
+  constructor ($timeout) {
     'use strict';
+
+    this.$timeout = $timeout;
 
     this.songs = [
       {
@@ -29,11 +31,16 @@ class DiscoverController {
 
   sendFeedback (like) {
     'use strict';
-    var randomSong = Math.round(Math.random() * (this.songs.length - 1));
-    this.currentSong = angular.copy(this.songs[randomSong]);
+
+    // Set the song as rated "like" and start animating
+    this.currentSong.rated = like;
+    this.currentSong.animating = true;
+
+    this.$timeout(() => {
+      var randomSong = Math.round(Math.random() * (this.songs.length - 1));
+      this.currentSong = angular.copy(this.songs[randomSong]);
+    }, 300);
   }
 }
 
-export default ['$scope', DiscoverController];
-
-//export default DiscoverCtrl;
+export default ['$timeout', DiscoverController];
