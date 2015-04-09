@@ -12,7 +12,7 @@ var appRouter = ['$stateProvider', '$urlRouterProvider', function mainRouter ($s
       url: '/tab',
       abstract: true,
       templateUrl: 'www/tabs/tabs.html',
-      controller: 'TabsCtrl'
+      controller: 'TabsCtrl as tabsCtrl'
     })
 
     // Each tab has its own nav history stack:

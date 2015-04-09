@@ -1,12 +1,17 @@
-/**
- * Created by eliorb on 04/04/2015.
- */
-class TabsCtrl {
-  constructor (){
-    'use strict';
+var AudioPlayer;
 
+class TabsCtrl {
+  constructor (_AudioPlayer_) {
+    AudioPlayer = _AudioPlayer_;
+  }
+
+  /**
+   * Stop audio on switching tab
+   */
+  onFavorites () {
+    AudioPlayer.pauseAudio();
   }
 
 }
 
-export default [TabsCtrl];
+export default ['AudioPlayer', TabsCtrl];

@@ -4,9 +4,9 @@
         <ion-nav-view name="tab-discover"></ion-nav-view>
     </ion-tab>
 
-
     <!-- Favorites Tab -->
-    <ion-tab title="Favorites" icon-off="ion-music-note" icon-on="ion-music-note" href="#/tab/favorites">
+    <ion-tab title="Favorites" icon-off="ion-music-note" icon-on="ion-music-note" href="#/tab/favorites"
+             on-select="tabsCtrl.onFavorites()">
         <ion-nav-view name="tab-favorites"></ion-nav-view>
     </ion-tab>
 </ion-tabs>

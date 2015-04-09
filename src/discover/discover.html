@@ -10,7 +10,7 @@
                         rated: discoverCtrl.currentSong.rated === true}">
 
             <div class="item item-image">
-                <img ng-src="{{ discoverCtrl.currentSong.image_large }}">
+                <img ng-click="discoverCtrl.playPauseSong()" ng-src="{{ discoverCtrl.currentSong.image_large }}">
             </div>
 
             <div class="item">
@@ -30,9 +30,6 @@
             </div>
 
         </div>
-
-        <div>Remaining songs: {{ discoverCtrl.songs.length }}</div>
-
 
     </ion-content>
 </ion-view>

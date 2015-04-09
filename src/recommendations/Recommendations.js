@@ -1,14 +1,15 @@
-var $http, $log, SERVER;
+var $http, $log, SERVER, AudioPlayer;
 
 /**
  * Recommendations
  */
 class Recommendations {
 
-  constructor (_$http_, _$log_, _SERVER_) {
+  constructor (_$http_, _$log_, _SERVER_, _AudioPlayer_) {
     $http = _$http_;
     $log = _$log_;
     SERVER = _SERVER_;
+    AudioPlayer = _AudioPlayer_;
 
     this.queue = [];
   }
@@ -28,6 +29,9 @@ class Recommendations {
     // Remove from the queue
     this.queue.shift();
 
+    // Pause audio
+    AudioPlayer.pauseAudio();
+
     if (this.queue.length <= 3) {
       $log.info('Fetching new songs...');
       this.fetchSongs();
@@ -36,4 +40,4 @@ class Recommendations {
 
 }
 
-export default ['$http', '$log', 'SERVER', Recommendations];
+export default ['$http', '$log',  'SERVER', 'AudioPlayer', Recommendations];
