@@ -22,7 +22,13 @@ var appRouter = ['$stateProvider', '$urlRouterProvider', function mainRouter ($s
       views: {
         'tab-discover': {
           templateUrl: 'www/discover/discover.html',
-          controller: 'DiscoverCtrl as discoverCtrl'
+          controller: 'DiscoverCtrl as discoverCtrl',
+          resolve: {
+            songs: ['Recommendations', function (Recommendations) {
+              return Recommendations.fetchSongs();
+            }]
+          }
+
         }
       }
     })

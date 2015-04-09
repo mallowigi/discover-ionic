@@ -1,4 +1,4 @@
-var run = ['$ionicPlatform', function run ($ionicPlatform) {
+export default ['$ionicPlatform', function run ($ionicPlatform) {
   'use strict';
   $ionicPlatform.ready(function () {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -12,5 +12,3 @@ var run = ['$ionicPlatform', function run ($ionicPlatform) {
   });
 }
 ];
-
-export default run;

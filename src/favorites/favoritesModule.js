@@ -1,8 +1,10 @@
+import '../models/User.js';
+
 import FavoritesCtrl from './FavoritesCtrl';
 
-var favoritesModule = angular.module('discover.favorites', [])
+export default angular.module('discover.favorites', [
+  'discover.models'
+])
   .controller({
     FavoritesCtrl: FavoritesCtrl
   });
-
-export default favoritesModule;

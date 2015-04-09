@@ -1,13 +1,14 @@
-/**
- * Created by eliorb on 04/04/2015.
- */
+import '../config/configModule.js';
+import '../recommendations/recommendationsModule.js';
+import '../models/modelsModule.js';
+
 import DiscoverCtrl from './DiscoverCtrl'
 
-var discoverModule = angular.module('discover.discover', [
-
-]);
-discoverModule.controller({
-  DiscoverCtrl: DiscoverCtrl
-});
-
-export default discoverModule;
+export default angular.module('discover.discover', [
+  'discover.config',
+  'discover.models',
+  'discover.recommendations'
+])
+  .controller({
+    DiscoverCtrl: DiscoverCtrl
+  });

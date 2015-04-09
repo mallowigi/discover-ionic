@@ -3,7 +3,5 @@
  */
 import User from "./User.js";
 
-var modelsModule = angular.module('discover.models', [])
+export default angular.module('discover.models', [])
   .service('User', User);
-
-export default modelsModule;
