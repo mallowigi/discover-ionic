@@ -1,6 +1,8 @@
 <ion-view view-title="Discover" class="discover-page">
     <ion-content scroll="false">
 
+        <!-- Prefetch -->
+        <img ng-src="{{discoverCtrl.nextImage()}}" width="1" height="1"/>
 
         <div class="list card current-song"
              ng-show="discoverCtrl.currentSong && !discoverCtrl.currentSong.animating"
@@ -28,6 +30,8 @@
             </div>
 
         </div>
+
+        <div>Remaining songs: {{ discoverCtrl.songs.length }}</div>
 
 
     </ion-content>

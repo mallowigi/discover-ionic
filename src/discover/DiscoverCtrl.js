@@ -2,17 +2,22 @@ var $timeout;
 
 class DiscoverController {
 
-  constructor (_$timeout_, User, songs) {
+  constructor (_$timeout_, User, Recommendations) {
     'use strict';
     $timeout = _$timeout_;
 
     // The User
     this.User = User;
 
-    // List of songs
-    this.songs = songs.data;
+    // List of recommendations
+    this.Recommendations = Recommendations;
 
+    // Keep instance of the current song
     this.currentSong = angular.copy(this.songs[0]);
+  }
+
+  get songs () {
+    return this.Recommendations.queue;
   }
 
   sendFeedback (like) {
@@ -27,11 +32,21 @@ class DiscoverController {
       this.User.addSong(this.currentSong);
     }
 
+    // Call next song
+    this.Recommendations.nextSong();
+
     $timeout(() => {
-      var randomSong = Math.round(Math.random() * (this.songs.length - 1));
-      this.currentSong = angular.copy(this.songs[randomSong]);
+      this.currentSong = this.songs[0];
     }, 300);
+  }
+
+  nextImage () {
+    if (this.songs.length > 1) {
+      return this.songs[1].image_large;
+    }
+
+    return '';
   }
 }
 
-export default ['$timeout', 'User', 'songs', DiscoverController];
+export default ['$timeout', 'User', 'Recommendations', DiscoverController];
