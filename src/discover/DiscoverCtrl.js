@@ -51,6 +51,7 @@ class DiscoverController {
 
     $timeout(() => {
       this.currentSong = DiscoverController.songs[0];
+      this.currentSong.loaded = false;
     }, 300);
   }
 
@@ -81,7 +82,7 @@ class DiscoverController {
     if (this.isPlaying) {
       AudioPlayer.pauseAudio(this.currentSong);
     } else {
-      AudioPlayer.playCurrentSong(this.currentSong);
+      AudioPlayer.playCurrentSong(this.currentSong).then(() => this.currentSong.loaded = true);
     }
 
     this.isPlaying = !this.isPlaying;

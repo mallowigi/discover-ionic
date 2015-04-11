@@ -15,6 +15,7 @@
 
             <div class="item">
                 <h2>{{ discoverCtrl.currentSong.title }}</h2>
+                <span ng-hide="discoverCtrl.currentSong.loaded">Man...<i class="ion-loading-c"></i></span>
                 <p>{{ discoverCtrl.currentSong.artist }}</p>
             </div>
 
