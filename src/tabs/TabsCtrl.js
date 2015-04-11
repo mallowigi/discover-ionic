@@ -1,17 +1,26 @@
 var AudioPlayer;
 
 class TabsCtrl {
-  constructor (_AudioPlayer_) {
+  constructor (_AudioPlayer_, User) {
     AudioPlayer = _AudioPlayer_;
+
+    this.User = User;
   }
 
-  /**
-   * Stop audio on switching tab
-   */
   onFavorites () {
+    /**
+     * Stop audio on switching tab
+     */
     AudioPlayer.pauseAudio();
+
+    /** Reset unread */
+    this.User.markAsRead();
+  }
+
+  get unread () {
+    return this.User.unread;
   }
 
 }
 
-export default ['AudioPlayer', TabsCtrl];
+export default ['AudioPlayer', 'User', TabsCtrl];

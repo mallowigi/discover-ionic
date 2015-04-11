@@ -2,7 +2,17 @@ class User {
 
   constructor () {
     'use strict';
+    /**
+     * List of favorites
+     * @type {Array}
+     */
     this.favorites = [];
+
+    /**
+     * Unread favorites
+     * @type {number}
+     */
+    this.unread = 0;
   }
 
   addSong (song) {
@@ -11,6 +21,7 @@ class User {
     }
 
     this.favorites.unshift(song);
+    this.unread++;
   }
 
   removeSong (song, index) {
@@ -19,6 +30,14 @@ class User {
     if (index) {
       this.favorites.splice(index, 1);
     }
+
+    if (this.unread > 0) {
+      this.unread--;
+    }
+  }
+
+  markAsRead () {
+    this.unread = 0;
   }
 }
 
