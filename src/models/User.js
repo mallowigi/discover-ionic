@@ -47,7 +47,7 @@ class User {
       authPromise = this.signin(username);
     }
 
-    return authPromise.then((session) => {
+    return authPromise.success((session) => {
       // Fill this with session data
       this.saveSession(session);
     });
@@ -106,6 +106,38 @@ class User {
     _.assign(this, session);
 
     $localStorage.set('user', {username: this.username, session_id: this.session_id})
+  }
+
+  getSession () {
+    return new Promise((resolve, reject) => {
+
+        // If user already has a session id return it
+        if (this.session_id) {
+          resolve(this);
+        }
+
+        // Check in the localstorage
+        let user = $localStorage.get('user');
+        if (user && user.session_id) {
+          _.assign(this, user);
+
+          // Fetch favorites
+          resolve(this.getSongs());
+        } else {
+          reject(this);
+        }
+      }
+    );
+  }
+
+  destroySession () {
+    this.username = '';
+    delete this.session_id;
+    this.favorites = [];
+    this.unread = 0;
+
+    $localStorage.set('user', {});
+
   }
 }
 

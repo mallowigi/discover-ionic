@@ -6,7 +6,12 @@ function splashRouter ($stateProvider) {
     .state('splash', {
       url: '/',
       templateUrl: 'www/views/splash/splash.html',
-      controller: 'SplashCtrl as splashCtrl'
+      controller: 'SplashCtrl as splashCtrl',
+      onEnter: ['$state', 'User', function ($state, User) {
+        if (User.session_id) {
+          $state.go('tab.discover');
+        }
+      }]
     }
   )
 

@@ -1,4 +1,5 @@
 var $window;
+
 class FavoritesCtrl {
   constructor (_$window_, User) {
     'use strict';
@@ -15,8 +16,17 @@ class FavoritesCtrl {
     return this.User.favorites;
   }
 
+  set favorites (favorites) {
+    this.User.favorites = favorites;
+  }
+
   openInSpotify (song) {
     song.open_url && $window.open(song.open_url, '_blank');
+  }
+
+  getFavorites () {
+    return this.User.getSongs()
+      .success((songs) => this.favorites = songs);
   }
 }
 
