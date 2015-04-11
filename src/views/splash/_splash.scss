@@ -1,0 +1,32 @@
+.splash-page {
+	background:url(/img/splash-bkg.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+
+
+	.card {
+		margin-top: 40px;
+	}
+
+	.logo h1 {
+		margin-top: 30px;
+		text-align: center;
+		color: #fff !important;
+		font-family: Verdana, Geneva, sans-serif;
+		font-weight: bold;
+		letter-spacing: -3px;
+		font-size: 42px;
+	}
+
+	.signup-opt {
+		color: #fff;
+		padding: 15px;
+		margin-top: 20px;
+		font-weight: bold;
+		cursor: pointer;
+	}
+
+	.action-button {
+		font-weight: bolder;
+	}
+}
