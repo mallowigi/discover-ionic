@@ -6,25 +6,25 @@
         </div>
 
         <div class="login-form">
-            <div class="card">
-                <div class="list">
-                    <label class="item item-input">
-                        <input type="text"
-                               ng-model="splashCtrl.username"
-                               placeholder="Enter your {{ splashCtrl.isSignUp ? 'desired' : 'Discover' }} username">
-                    </label>
+            <form ng-submit="splashCtrl.submitForm()">
+                <div class="card">
+                    <div class="list">
+                        <label class="item item-input">
+                            <input type="text"
+                                   ng-model="splashCtrl.username"
+                                   placeholder="Enter your {{ splashCtrl.isSignUp ? 'desired' : 'Discover' }} username">
+                        </label>
+                    </div>
                 </div>
-            </div>
 
-            <div class="padding-left padding-right">
-                <button class="button button-block action-button"
-                        ng-class="{'button-positive': !splashCtrl.isSignUp, 'button-balanced': splashCtrl.isSignUp}"
-                        ng-click="splashCtrl.submitForm()">
-                    {{ splashCtrl.isSignUp ? 'Sign up' : 'Sign in' }}
-                </button>
-            </div>
+                <div class="padding-left padding-right">
+                    <button class="button button-block action-button"
+                            ng-class="{'button-positive': !splashCtrl.isSignUp, 'button-balanced': splashCtrl.isSignUp}">
+                        {{ splashCtrl.isSignUp ? 'Sign up' : 'Sign in' }}
+                    </button>
+                </div>
+            </form>
         </div>
-
 
         <div class="padding signup-opt" ng-click="splashCtrl.isSignUp = !splashCtrl.isSignUp">
             <a href="#" ng-show="splashCtrl.isSignUp">Have an account? Sign in!</a>

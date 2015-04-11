@@ -6,6 +6,7 @@ import Recommendations from "./Recommendations.js";
 
 export default angular.module('discover.models', [
   'ionic',
+  'LocalStorageModule',
 
   'discover.config',
   'discover.services'

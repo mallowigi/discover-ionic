@@ -1,12 +1,13 @@
-var $http, SERVER;
+var $http, SERVER, $localStorage;
 
 class User {
 
-  constructor (_$http_, _SERVER_) {
+  constructor (_$http_, _SERVER_, _localStorageService_) {
 
     // Services
     $http = _$http_;
     SERVER = _SERVER_;
+    $localStorage = _localStorageService_;
 
     /**
      * The username
@@ -18,7 +19,7 @@ class User {
      * The access token
      * @type {null}
      */
-    this.sessionId = null;
+    this.session_id = null;
 
     /**
      * List of favorites
@@ -34,15 +35,22 @@ class User {
   }
 
   auth (username, isSignUp) {
+    var authPromise;
+
     if (!username) {
       throw Error('Auth: Username is undefined');
     }
 
     if (isSignUp) {
-      return this.signup(username);
+      authPromise = this.signup(username);
     } else {
-      return this.signin(username);
+      authPromise = this.signin(username);
     }
+
+    return authPromise.then((session) => {
+      // Fill this with session data
+      this.saveSession(session);
+    });
   }
 
   signup (username) {
@@ -55,7 +63,7 @@ class User {
 
   getSongs () {
     return $http.get(`${SERVER}/favorites`, {
-      params: {session_id: this.sessionId}
+      params: {session_id: this.session_id}
     })
       // Save favorites
       .success((favorites) => this.favorites = favorites);
@@ -70,7 +78,7 @@ class User {
     this.unread++;
 
     // persist this to the server
-    return $http.post(`${SERVER}/favorites`, {session_id: this.sessionId, song_id: song.song_id});
+    return $http.post(`${SERVER}/favorites`, {session_id: this.session_id, song_id: song.song_id});
   }
 
   removeSong (song, index) {
@@ -86,13 +94,19 @@ class User {
 
     // Delete song from user favorites
     return $http.delete(`${SERVER}/favorites`, {
-      params: {session_id: this.sessionId, song_id: song.song_id}
+      params: {session_id: this.session_id, song_id: song.song_id}
     });
   }
 
   markAsRead () {
     this.unread = 0;
   }
+
+  saveSession (session) {
+    _.assign(this, session);
+
+    $localStorage.set('user', {username: this.username, session_id: this.session_id})
+  }
 }
 
-export default ['$http', 'SERVER', User];
+export default ['$http', 'SERVER', 'localStorageService', User];
