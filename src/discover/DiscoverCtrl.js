@@ -16,7 +16,7 @@ class DiscoverController {
     AudioPlayer = _AudioPlayer_;
 
     // Keep instance of the current song
-    this.currentSong = angular.copy(DiscoverController.songs[0]);
+    this.currentSong = angular.copy(this.songs[0]);
 
     // Whether a song is playing
     this.isPlaying = false;
@@ -26,7 +26,7 @@ class DiscoverController {
    * Static method to get the songs from the Recommendations service
    * @returns {Array|*}
    */
-  static get songs () {
+  get songs () {
     return Recommendations.queue;
   }
 
@@ -50,8 +50,7 @@ class DiscoverController {
     this.nextSong();
 
     $timeout(() => {
-      this.currentSong = DiscoverController.songs[0];
-      this.currentSong.loaded = false;
+      this.currentSong = this.songs[0];
     }, 300);
   }
 
@@ -59,9 +58,9 @@ class DiscoverController {
    * Static method to get the next image in the queue
    * @returns {*}
    */
-  static nextImage () {
-    if (DiscoverController.songs.length > 1) {
-      return DiscoverController.songs[1].image_large;
+  get nextImage () {
+    if (this.songs.length > 1) {
+      return this.songs[1].image_large;
     }
 
     return '';
@@ -82,7 +81,9 @@ class DiscoverController {
     if (this.isPlaying) {
       AudioPlayer.pauseAudio(this.currentSong);
     } else {
-      AudioPlayer.playCurrentSong(this.currentSong).then(() => this.currentSong.loaded = true);
+      // Load and play song
+      AudioPlayer.loadAndPlay(this.currentSong)
+        .then(() => this.currentSong.loaded = true);
     }
 
     this.isPlaying = !this.isPlaying;

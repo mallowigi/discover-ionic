@@ -21,7 +21,7 @@ class Recommendations {
   fetchSongs () {
     // Show loader
     $ionicLoading.show({
-      template: '<i class="ion-loading-c"></i>',
+      template: '<i class="ion-loading-a"></i>',
       noBackdrop: true
     });
 

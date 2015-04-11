@@ -1,8 +1,8 @@
-<ion-view view-title="Discover" class="discover-page">
+<ion-view view-title="Discover" class="discover-page" ng-controller="DiscoverCtrl as discoverCtrl">
     <ion-content scroll="false">
 
         <!-- Prefetch -->
-        <img ng-src="{{discoverCtrl.nextImage()}}" width="1" height="1"/>
+        <img ng-src="{{discoverCtrl.nextImage}}" width="1" height="1"/>
 
         <div class="list card current-song"
              ng-show="discoverCtrl.currentSong && !discoverCtrl.currentSong.animating"
@@ -15,7 +15,7 @@
 
             <div class="item">
                 <h2>{{ discoverCtrl.currentSong.title }}</h2>
-                <span ng-hide="discoverCtrl.currentSong.loaded">Man...<i class="ion-loading-c"></i></span>
+                <span ng-show="discoverCtrl.currentSong.loaded === false"><i class="icon ion-loading-c"></i></span>
                 <p>{{ discoverCtrl.currentSong.artist }}</p>
             </div>
 
