@@ -24,9 +24,15 @@ class FavoritesCtrl {
     song.open_url && $window.open(song.open_url, '_blank');
   }
 
-  getFavorites () {
-    return this.User.getSongs()
-      .success((songs) => this.favorites = songs);
+  get username () {
+    return this.User.username;
+  }
+
+  logout () {
+    this.User.destroySession();
+
+    // Instead of $state.go to provoke full reload
+    $window.location.href = '/';
   }
 }
 

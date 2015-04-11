@@ -1,4 +1,11 @@
-<ion-view view-title="Favorites" class="favorites-page" ng-controller="FavoritesCtrl as favoritesCtrl">
+<ion-view view-title="Favorites | {{ favoritesCtrl.username }}" class="favorites-page" ng-controller="FavoritesCtrl as favoritesCtrl">
+
+    <ion-nav-buttons side="right">
+        <button class="button" ng-click="favoritesCtrl.logout()">
+            Log out
+        </button>
+    </ion-nav-buttons>
+
     <ion-content>
         <ion-list>
             <ion-item ng-repeat="song in favoritesCtrl.favorites" class="item-avatar" ng-click="favoritesCtrl.openInSpotify(song)">
