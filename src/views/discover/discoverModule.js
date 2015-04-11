@@ -7,6 +7,7 @@ import DiscoverCtrl from './DiscoverCtrl'
 
 export default angular.module('discover.discover', [
   'ionic',
+  'ionic.contrib.ui.tinderCards',
 
   'discover.config',
   'discover.models',

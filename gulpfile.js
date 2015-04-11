@@ -24,6 +24,7 @@ var run = require('run-sequence');
 
 var libs = [
   './www/lib/ionic/js/ionic.bundle.js',
+  './www/lib/ionic-contrib-tinder-cards/ionic.tdcards.js',
   './www/lib/lodash/lodash.js',
   './www/lib/angular-animate/angular-animate.js',
   './www/lib/angular-local-storage/dist/angular-local-storage.js'

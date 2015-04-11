@@ -4,33 +4,43 @@
         <!-- Prefetch -->
         <img ng-src="{{discoverCtrl.nextImage}}" width="1" height="1"/>
 
-        <div class="list card current-song"
-             ng-show="discoverCtrl.currentSong && !discoverCtrl.currentSong.animating"
-             ng-class="{skipped: discoverCtrl.currentSong.rated === false,
-                        rated: discoverCtrl.currentSong.rated === true}">
+        <td-cards>
+            <td-card ng-repeat="song in discoverCtrl.songs"
+                     on-destroy="discoverCtrl.sendFeedback(false)"
+                     on-swipe-left="discoverCtrl.sendFeedback(false)"
+                     on-swipe-right="discoverCtrl.sendFeedback(true)"
+                >
+                <div class="list card current-song"
+                     ng-show="song && !song.animating"
+                     ng-class="{skipped: song.rated === false,
+                        rated: song.rated === true}">
 
-            <div class="item item-image">
-                <img ng-click="discoverCtrl.playPauseSong()" ng-src="{{ discoverCtrl.currentSong.image_large }}">
-            </div>
+                    <div class="item item-image">
+                        <img ng-click="discoverCtrl.playPauseSong()" ng-src="{{ song.image_large }}">
+                    </div>
 
-            <div class="item">
-                <h2>{{ discoverCtrl.currentSong.title }}</h2>
-                <span ng-show="discoverCtrl.currentSong.loaded === false"><i class="icon ion-loading-c"></i></span>
-                <p>{{ discoverCtrl.currentSong.artist }}</p>
-            </div>
+                    <div class="item">
+                        <h2>{{ song.title }}</h2>
+                        <span ng-show="song.loaded === false"><i class="icon ion-loading-c"></i></span>
+                        <p>{{ song.artist }}</p>
+                    </div>
 
-            <div class="item tabs tabs-secondary tabs-icon-left">
-                <a class="tab-item" ng-click="discoverCtrl.sendFeedback(false)">
-                    <i class="icon ion-close"></i>
-                    Skip
-                </a>
-                <a class="tab-item" ng-click="discoverCtrl.sendFeedback(true)">
-                    <i class="icon ion-heart"></i>
-                    Favorite
-                </a>
-            </div>
+                    <div class="item tabs tabs-secondary tabs-icon-left">
+                        <a class="tab-item" ng-click="discoverCtrl.sendFeedback(false)">
+                            <i class="icon ion-close"></i>
+                            Skip
+                        </a>
+                        <a class="tab-item" ng-click="discoverCtrl.sendFeedback(true)">
+                            <i class="icon ion-heart"></i>
+                            Favorite
+                        </a>
+                    </div>
 
-        </div>
+                </div>
+            </td-card>
+        </td-cards>
+
+
 
     </ion-content>
 </ion-view>
