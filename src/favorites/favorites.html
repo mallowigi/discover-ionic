@@ -1,7 +1,7 @@
-<ion-view view-title="Favorites" class="favorites-page">
+<ion-view view-title="Favorites" class="favorites-page" ng-controller="FavoritesCtrl as favoritesCtrl">
     <ion-content>
         <ion-list>
-            <ion-item ng-repeat="song in favoritesCtrl.favorites" class="item-avatar">
+            <ion-item ng-repeat="song in favoritesCtrl.favorites" class="item-avatar" ng-click="favoritesCtrl.openInSpotify(song)">
                 <img ng-src="{{ song.image_small }}">
 
                 <h2>{{ song.title }}</h2>
