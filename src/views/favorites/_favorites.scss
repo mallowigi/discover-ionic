@@ -1,3 +1,14 @@
 .favorites-page {
+	.song-info {
+		display: inline-block;
+	}
 
+	.share {
+		display: inline-block;
+		float: right;
+
+		i {
+			font-size: 2em;
+		}
+	}
 }

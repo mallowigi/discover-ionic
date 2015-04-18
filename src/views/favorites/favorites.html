@@ -11,8 +11,13 @@
             <ion-item ng-repeat="song in favoritesCtrl.favorites" class="item-avatar" ng-click="favoritesCtrl.openInSpotify(song)">
                 <img ng-src="{{ song.image_small }}">
 
-                <h2>{{ song.title }}</h2>
-                <p>{{ song.artist }}</p>
+                <div class="song-info">
+                    <h2>{{ ::song.title }}</h2>
+                    <p>{{ ::song.artist }}</p>
+                </div>
+                <div class="share">
+                    <i class="ion ion-share" ng-click="favoritesCtrl.share($event)"></i>
+                </div>
 
                 <ion-option-button class="button-assertive" ng-click="favoritesCtrl.removeSong(song, $index)">
                     <i class="ion-minus-circled"></i>
