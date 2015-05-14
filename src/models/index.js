@@ -1,5 +1,5 @@
-import '../config/configModule.js';
-import '../services/servicesModule.js';
+import '../config';
+import '../services';
 
 import User from "./User.js";
 import Recommendations from "./Recommendations.js";

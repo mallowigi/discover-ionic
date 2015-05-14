@@ -1,6 +1,6 @@
-import '../../config/configModule.js';
-import '../../models/modelsModule.js';
-import '../../services/servicesModule.js';
+import '../../config';
+import '../../models';
+import '../../services';
 
 import discoverRouter from './discoverRouter.js';
 import DiscoverCtrl from './DiscoverCtrl'

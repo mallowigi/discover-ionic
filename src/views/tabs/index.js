@@ -1,8 +1,8 @@
 /**
  * Created by eliorb on 04/04/2015.
  */
-import '../../models/modelsModule.js';
-import '../../services/servicesModule.js';
+import '../../models';
+import '../../services';
 
 import tabsRouter from './tabsRouter.js';
 import TabsCtrl from './TabsCtrl';

@@ -1,4 +1,4 @@
-import '../../models/modelsModule.js';
+import '../../models';
 
 import favoritesRouter from './favoritesRouter.js';
 import FavoritesCtrl from './FavoritesCtrl';

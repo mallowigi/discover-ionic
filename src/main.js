@@ -1,8 +1,8 @@
 // Add modules
-import './config/configModule.js';
-import './models/modelsModule.js';
-import './services/servicesModule.js';
-import './views/viewsModule.js';
+import './config';
+import './models';
+import './services';
+import './views';
 
 import run from './run';
 

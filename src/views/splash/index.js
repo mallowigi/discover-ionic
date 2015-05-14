@@ -1,7 +1,7 @@
 /**
  * Created by eliorb on 11/04/2015.
  */
-import '../../models/modelsModule.js';
+import '../../models';
 
 import splashRouter from './splashRouter.js';
 import SplashCtrl from './SplashCtrl';
