@@ -2,6 +2,7 @@
 import './config';
 import './models';
 import './services';
+import './directives';
 import './views';
 
 import run from './run';
@@ -15,6 +16,7 @@ var modules = [
   , 'discover.config'
   , 'discover.models'
   , 'discover.services'
+  , 'discover.directives'
   , 'discover.views'
 
 ];

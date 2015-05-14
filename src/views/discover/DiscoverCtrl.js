@@ -1,10 +1,12 @@
-var $timeout, User, Recommendations, AudioPlayer;
+import {MainController} from '../../MainController';
 
-class DiscoverController {
+var User, Recommendations, AudioPlayer;
 
-  constructor (_$timeout_, _User_, _Recommendations_, _AudioPlayer_) {
+class DiscoverController extends MainController {
+
+  constructor (_User_, _Recommendations_, _AudioPlayer_) {
     'use strict';
-    $timeout = _$timeout_;
+    super();
 
     // The User
     User = _User_;
@@ -49,7 +51,7 @@ class DiscoverController {
     // Call next song
     this.nextSong();
 
-    $timeout(() => {
+    this.$timeout(() => {
       this.currentSong = this.songs[0];
     }, 300);
   }
@@ -90,4 +92,4 @@ class DiscoverController {
   }
 }
 
-export default ['$timeout', 'User', 'Recommendations', 'AudioPlayer', DiscoverController];
+export default ['User', 'Recommendations', 'AudioPlayer', DiscoverController];
