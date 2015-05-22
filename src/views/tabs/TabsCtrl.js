@@ -1,6 +1,6 @@
 var AudioPlayer;
 
-class TabsCtrl {
+export class TabsCtrl {
   constructor (_AudioPlayer_, User) {
     AudioPlayer = _AudioPlayer_;
 

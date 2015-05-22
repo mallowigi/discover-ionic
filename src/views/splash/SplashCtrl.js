@@ -3,7 +3,7 @@
  */
 var User, $state;
 
-class SplashCtrl {
+export class SplashCtrl {
   constructor (_User_, _$state_) {
     // services
     User = _User_;

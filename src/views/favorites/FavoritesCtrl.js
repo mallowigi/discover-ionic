@@ -1,6 +1,6 @@
 var $window;
 
-class FavoritesCtrl {
+export class FavoritesCtrl {
   constructor (_$window_, User) {
     'use strict';
     $window = _$window_;

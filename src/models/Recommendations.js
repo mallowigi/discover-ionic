@@ -3,7 +3,7 @@ var $http, $log, SERVER, AudioPlayer, $ionicLoading;
 /**
  * Recommendations
  */
-class Recommendations {
+export class Recommendations {
 
   constructor (_$http_, _$log_, _SERVER_, _AudioPlayer_, _$ionicLoading_) {
     $http = _$http_;

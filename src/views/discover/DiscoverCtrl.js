@@ -2,7 +2,7 @@ import {MainController} from '../../MainController';
 
 var User, Recommendations, AudioPlayer;
 
-class DiscoverController extends MainController {
+export class DiscoverController extends MainController {
 
   constructor (_User_, _Recommendations_, _AudioPlayer_) {
     'use strict';

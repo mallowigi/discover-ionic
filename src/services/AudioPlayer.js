@@ -1,6 +1,6 @@
 var media;
 
-class AudioPlayer {
+export class AudioPlayer {
 
   loadAndPlay (song) {
     return new Promise((resolve, reject) => {
